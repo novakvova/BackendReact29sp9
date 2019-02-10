@@ -33,5 +33,24 @@ namespace Backend.Controllers
 
             return Content(HttpStatusCode.OK, model);
         }
+        public IHttpActionResult PostSaveGame(GameAddViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var gameSave = new GameItemViewModel
+                {
+                    id = 3,
+                    title = model.Title,
+                    image = model.Image
+                };
+
+                return Content(HttpStatusCode.OK, model);
+            }
+            return Content(HttpStatusCode.BadRequest, new
+            {
+                title="має бути",
+                image="теж саме"
+            });
+        }
     }
 }
